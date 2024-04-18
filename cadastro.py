@@ -21,6 +21,7 @@ def cadastrar():
     janela2.title('Confirmação: ')
     janela2.geometry('500x500')
     cadastro = register(mydb, nome, email, senha, data_nasc, rua, bairro, cidade, estado, cep)
+
     label_cadastro = tk.Label(janela2, text='Usuário registrado com sucesso.')
     label_cadastro.pack()
 
@@ -30,7 +31,6 @@ def cadastrar():
 def inicio():
     janela3 = tk.Toplevel()
     janela3.geometry('500x500')
-    janela3.geometry('300x300')
 
 
     
@@ -45,51 +45,61 @@ janela.geometry('500x500')
 label_titulo = tk.Label(janela, text="Faça aqui seu Cadastro: ")
 label_titulo.pack()
 
+# Nome ------------------------------------
 label_nome = tk.Label(janela, text="Nome: ")
 label_nome.pack()
 entry_nome = tk.Entry(janela)
 entry_nome.pack()
 
+# Email -------------------------------------
 label_email = tk.Label(janela, text="Email: ")
 label_email.pack()
 entry_email = tk.Entry(janela)
 entry_email.pack()
 
+# Senha -------------------------------------
 label_senha = tk.Label(janela, text="Senha: ")
 label_senha.pack()
 entry_senha = tk.Entry(janela, show="*")
 entry_senha.pack()
 
+# Data de Nascimento ------------------------------
 label_data_nasc = tk.Label(janela, text="Data de Nascimento: ")
 label_data_nasc.pack()
 entry_data_nasc = tk.Entry(janela)
 entry_data_nasc.pack()
 
+# Rua ---------------------------------------
 label_rua = tk.Label(janela, text="Rua: ")
 label_rua.pack()
 entry_rua = tk.Entry(janela)
 entry_rua.pack()
 
+# Bairro ------------------------------------
 label_bairro = tk.Label(janela, text="Bairro: ")
 label_bairro.pack()
 entry_bairro = tk.Entry(janela)
 entry_bairro.pack()
 
+# Cidade ------------------------------------
 label_cidade = tk.Label(janela, text="Cidade: ")
 label_cidade.pack()
 entry_cidade = tk.Entry(janela)
 entry_cidade.pack()
 
+# Estado ------------------------------------
 label_estado = tk.Label(janela, text="Estado: ")
 label_estado.pack()
 entry_estado = tk.Entry(janela)
 entry_estado.pack()
 
+# CEP ------------------------------------
 label_cep = tk.Label(janela, text="CEP: ")
 label_cep.pack()
 entry_cep = tk.Entry(janela)
 entry_cep.pack()
 
+# Botões ------------------------------------
 botao_cadastrar = tk.Button(janela, text= "Cadastrar", command=cadastrar)
 botao_cadastrar.pack()
 
