@@ -1,4 +1,5 @@
-from def_tkinter import cadastrar, entrar
+
+from def_tkinter import *
 import tkinter as tk
 
 

@@ -1,6 +1,6 @@
 from livro import Livro
 
-def insert(mydb, titulo, autor, ano, status_):
+def inserir(mydb, titulo, autor, ano, status_):
     mycursor = mydb.cursor()
 
     sql = "INSERT INTO livros (titulo, autor, ano, status_) VALUES (%s, %s, %s, %s)"

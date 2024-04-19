@@ -1,6 +1,7 @@
 import tkinter as tk
-from bd import register, login, insert, update, listar
+from bd import *
 from conexao import connect
+from tkinter import *
 
 mydb = connect()
 
@@ -142,7 +143,7 @@ def cadastro_livro():
         janela_cl = tk.Tk()
         janela_cl.title('Confirmação: ')
         janela_cl.geometry('500x500')
-        cadastro_l = insert(mydb, titulo, autor, ano, status)
+        cadastro_l = inserir(mydb, titulo, autor, ano, status)
 
         label_cadastro = tk.Label(janela_cl, text='Livro registrado com sucesso.')
         label_cadastro.pack()
@@ -249,20 +250,6 @@ def update_livro():
     botao_voltar.pack()
 
 # Listar os Livros
-def listar_livro():
-    janela_list = tk.Tk()
-    janela_list.title('Listar Livros')
-    janela_list.geometry('500x500')
-
-    label_list = tk.Label(janela_list, text='Lista de livros')
-    label_list.pack()
-
-    lista = listar(mydb)
-    label_livros = tk.LabelFrame(janela_list, bg=lista)
-    label_list.pack()
-
-    botao_voltar = tk.Button(janela_list, text = "Cancelar", command=janela_list.destroy)
-    botao_voltar.pack()
 
 # Emprestar Livros
 def emprestar_livro():
@@ -293,7 +280,7 @@ def inicio():
     botao_update = tk.Button(janela_home, text='Atualizar Livro', command=update_livro)
     botao_update.pack()
 
-    botao_listar = tk.Button(janela_home, text='Listar livros', command=listar_livro)
+    botao_listar = tk.Button(janela_home, text='Listar livros', command=listar)
     botao_listar.pack()
 
     botao_emprestar = tk.Button(janela_home, text='Emprestar Livro', command=emprestar_livro)
