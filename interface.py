@@ -1,5 +1,5 @@
 
-from def_tkinter import *
+from def_tkinter import cadastrar, entrar, cadastro_livro, update_livro, listar_livros, emprestar_livro, devolver_livro, inicio
 import tkinter as tk
 
 

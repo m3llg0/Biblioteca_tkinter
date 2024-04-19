@@ -186,3 +186,25 @@ def listar(mydb):
     resultado = mycursor.fetchall()
     print(resultado)
     mycursor.close()
+
+def emprestar(mydb, id_livro):
+    mycursor = mydb.cursor()
+    status = 0
+    
+    sql = "UPDATE livros SET status_=%s WHERE id_livro=%s"
+    val = (status, id_livro)
+       
+    mycursor.execute(sql, val)
+    mydb.commit()
+    mycursor.close()
+
+def devolver(mydb, id_livro):
+    mycursor = mydb.cursor()
+    status = 1
+    
+    sql = "UPDATE livros SET status_=%s WHERE id_livro=%s"
+    val = (status, id_livro)
+       
+    mycursor.execute(sql, val)
+    mydb.commit()
+    mycursor.close()
