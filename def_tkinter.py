@@ -1,5 +1,5 @@
 import tkinter as tk
-from bd import register, login, insert, update, listar
+from bd import register, login, insert, update, listar, give_back, emprestar, devolver
 from conexao import connect
 
 mydb = connect()
@@ -266,11 +266,49 @@ def listar_livro():
 
 # Emprestar Livros
 def emprestar_livro():
+    def mudando_em():
+        id_livro = entry_id.get()
+        emprestando = emprestar(mydb, id_livro)
+
     janela_em = tk.Tk()
+    janela_em.title("Página de emprestar um livro")
+    
+    text_emprestar = tk.Label(janela_em, text="Emprestar um livro!")
+    text_emprestar.grid(column=0, row=2, padx= 10, pady=10)
+
+    text_id = tk.Label(janela_em,text= "Digite o id do livro:")
+    text_id.grid(column=0,row=3, padx= 10, pady=10)
+    entry_id = tk.Entry(janela_em)
+    entry_id.grid(column=0, row=4, padx= 10, pady=10)
+
+    botao_voltar6 = tk.Button(janela_em, text="Fechar a janela", command= janela_em.destroy)
+    botao_voltar6.grid(column=0, row=1, padx=10, pady=10)
+
+    botao_entrar6 = tk.Button(janela_em, text="Concluido!", command=mudando_em)
+    botao_entrar6.grid(column=0, row=7,  padx= 10, pady=10)
 
 # Devolver livros
 def devolver_livro():
-    janela_dev = tk.Tk()
+    def mudando():
+        id_livro = entry_id.get()
+        devolvendo = devolver(mydb, id_livro)
+
+    janela_dev = tk.Toplevel()
+    janela_dev.title("Página de devolver um livro")
+    
+    text_emprestar = tk.Label(janela_dev, text="Devolver um livro!")
+    text_emprestar.grid(column=0, row=2, padx= 10, pady=10)
+
+    text_id = tk.Label(janela_dev,text= "Digite o id do livro:")
+    text_id.grid(column=0,row=3, padx= 10, pady=10)
+    entry_id = tk.Entry(janela_dev)
+    entry_id.grid(column=0, row=4, padx= 10, pady=10)
+
+    botao_voltar6 = tk.Button(janela_dev, text="Fechar a janela", command= janela_dev.destroy)
+    botao_voltar6.grid(column=0, row=1, padx=10, pady=10)
+
+    botao_entrar6 = tk.Button(janela_dev, text="Concluido!", command=mudando)
+    botao_entrar6.grid(column=0, row=7,  padx= 10, pady=10)
 
 # Home 
 def inicio():
