@@ -92,7 +92,6 @@ while True:
         titulo = input('Digite o título do livro que deseja devolver: ')
         give_back(mydb, user, titulo)
 
-
     elif opcao == "9":
         break
 

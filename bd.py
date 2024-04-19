@@ -176,3 +176,13 @@ def give_back(mydb, user, titulo):
         print("Você precisa fazer login para devolver um livro.")
 
     mycursor.close()
+
+def listar(mydb):
+    mycursor = mydb.cursor()
+
+    sql = "SELECT * FROM livros"
+
+    mycursor.execute(sql)
+    resultado = mycursor.fetchall()
+    print(resultado)
+    mycursor.close()
