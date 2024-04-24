@@ -1,6 +1,6 @@
 import tkinter as tk
 from bd import *
-from bd import register, login, insert, update, listar, give_back, emprestar, devolver
+from bd import register, login, inserir, update, listar, emprestar, devolver
 from conexao import connect
 from tkinter import *
 
@@ -24,7 +24,7 @@ def cadastrar():
         janela2 = tk.Tk()
         janela2.title('Confirmação: ')
         janela2.geometry('500x500')
-        cadastro = register(mydb, nome, email, senha, data_nasc, rua, bairro, cidade, estado, cep)
+        cadastrando = register(mydb, nome, email, senha, data_nasc, rua, bairro, cidade, estado, cep)
 
         label_cadastro = tk.Label(janela2, text='Usuário registrado com sucesso.')
         label_cadastro.pack()
@@ -35,91 +35,102 @@ def cadastrar():
     # Janela principal do cadastro -----------------------------
     janela_cadastro = tk.Tk()
     janela_cadastro.title("Faça aqui o seu Cadastro")
-    janela_cadastro.geometry('500x500')
+    janela_cadastro.geometry('500x250')
+    janela_cadastro.configure(background='black')
 
-    label_titulo = tk.Label(janela_cadastro, text="Faça aqui seu Cadastro: ")
-    label_titulo.pack()
+    label_titulo = tk.Label(janela_cadastro, text="Faça aqui seu Cadastro: ", background='black', foreground='white')
+    label_titulo.grid(column=2, row=0)
+    label_titulo.configure(font=("Courier", 12, "bold"))
 
     # Nome ------------------------------------
-    label_nome = tk.Label(janela_cadastro, text="Nome: ")
-    label_nome.pack()
+    label_nome = tk.Label(janela_cadastro, text="Nome: ", background='black', foreground='white')
+    label_nome.grid(column=1, row=1)
     entry_nome = tk.Entry(janela_cadastro)
-    entry_nome.pack()
+    entry_nome.grid(column=1, row=2)
 
     # Email -------------------------------------
-    label_email = tk.Label(janela_cadastro, text="Email: ")
-    label_email.pack()
+    label_email = tk.Label(janela_cadastro, text="Email: ", background='black', foreground='white')
+    label_email.grid(column=1, row=3)
     entry_email = tk.Entry(janela_cadastro)
-    entry_email.pack()
+    entry_email.grid(column=1, row=4)
 
     # Senha -------------------------------------
-    label_senha = tk.Label(janela_cadastro, text="Senha: ")
-    label_senha.pack()
+    label_senha = tk.Label(janela_cadastro, text="Senha: ", background='black', foreground='white')
+    label_senha.grid(column=1, row=5)
     entry_senha = tk.Entry(janela_cadastro, show="*")
-    entry_senha.pack()
+    entry_senha.grid(column=1, row=6)
 
     # Data de Nascimento ------------------------------
-    label_data_nasc = tk.Label(janela_cadastro, text="Data de Nascimento: ")
-    label_data_nasc.pack()
+    label_data_nasc = tk.Label(janela_cadastro, text="Data de Nascimento: ", background='black', foreground='white')
+    label_data_nasc.grid(column=2, row=1)
     entry_data_nasc = tk.Entry(janela_cadastro)
-    entry_data_nasc.pack()
+    entry_data_nasc.grid(column=2, row=2)
 
     # Rua ---------------------------------------
-    label_rua = tk.Label(janela_cadastro, text="Rua: ")
-    label_rua.pack()
+    label_rua = tk.Label(janela_cadastro, text="Rua: ", background='black', foreground='white')
+    label_rua.grid(column=2, row=3)
     entry_rua = tk.Entry(janela_cadastro)
-    entry_rua.pack()
+    entry_rua.grid(column=2, row=4)
 
     # Bairro ------------------------------------
-    label_bairro = tk.Label(janela_cadastro, text="Bairro: ")
-    label_bairro.pack()
+    label_bairro = tk.Label(janela_cadastro, text="Bairro: ", background='black', foreground='white')
+    label_bairro.grid(column=2, row=5)
     entry_bairro = tk.Entry(janela_cadastro)
-    entry_bairro.pack()
+    entry_bairro.grid(column=2, row=6)
 
     # Cidade ------------------------------------
-    label_cidade = tk.Label(janela_cadastro, text="Cidade: ")
-    label_cidade.pack()
+    label_cidade = tk.Label(janela_cadastro, text="Cidade: ", background='black', foreground='white')
+    label_cidade.grid(column=3, row=1)
     entry_cidade = tk.Entry(janela_cadastro)
-    entry_cidade.pack()
+    entry_cidade.grid(column=3, row=2)
 
     # Estado ------------------------------------
-    label_estado = tk.Label(janela_cadastro, text="Estado: ")
-    label_estado.pack()
+    label_estado = tk.Label(janela_cadastro, text="Estado: ", background='black', foreground='white')
+    label_estado.grid(column=3, row=3)
     entry_estado = tk.Entry(janela_cadastro)
-    entry_estado.pack()
+    entry_estado.grid(column=3, row=4)
 
     # CEP ------------------------------------
-    label_cep = tk.Label(janela_cadastro, text="CEP: ")
-    label_cep.pack()
+    label_cep = tk.Label(janela_cadastro, text="CEP: ", background='black', foreground='white')
+    label_cep.grid(column=3, row=5)
     entry_cep = tk.Entry(janela_cadastro)
-    entry_cep.pack()
+    entry_cep.grid(column=3, row=6)
 
     # Botões ------------------------------------
+    label_vazio1 = tk.Label(janela_cadastro, text='', background='black')
+    label_vazio1.grid(column=1, row=8)
+
     botao_cadastrar = tk.Button(janela_cadastro, text= "Cadastrar", command=adicionando)
-    botao_cadastrar.pack()
+    botao_cadastrar.grid(column=1, row=9)
+
+    label_vazio2 = tk.Label(janela_cadastro, text='', background='black')
+    label_vazio2.grid(column=3, row=8)
 
     botao_voltar = tk.Button(janela_cadastro, text = "Cancelar", command=janela_cadastro.destroy)
-    botao_voltar.pack()
+    botao_voltar.grid(column=3, row=9)
 
 # Login
 def entrar():
     janela_login = tk.Tk()
     janela_login.title('Login')
-    janela_login.geometry('500x500')
-    label_titulo = tk.Label(janela_login, text="Login")
-    label_titulo.pack()
+    janela_login.geometry('500x250')
+    janela_login.configure(background='black')
+
+    label_titulo = tk.Label(janela_login, text="Faça o seu login:", background='black', foreground='white')
+    label_titulo.grid(column=2, row=1)
+    label_titulo.configure(font=("Courier", 12, "bold"))
 
     # Email -------------------------------------
-    label_email = tk.Label(janela_login, text="Email: ")
-    label_email.pack()
+    label_email = tk.Label(janela_login, text="Email: ", background='black', foreground='white')
+    label_email.grid(column=2, row=2)
     entry_email = tk.Entry(janela_login)
-    entry_email.pack()
+    entry_email.grid(column=2, row=3)
 
     # Senha -------------------------------------
-    label_senha = tk.Label(janela_login, text="Senha: ")
-    label_senha.pack()
+    label_senha = tk.Label(janela_login, text="Senha: ", background='black', foreground='white')
+    label_senha.grid(column=2, row=4)
     entry_senha = tk.Entry(janela_login, show="*")
-    entry_senha.pack()
+    entry_senha.grid(column=2, row=5)
 
     # Logando -----------------------------------
     email = entry_email.get()
@@ -127,11 +138,20 @@ def entrar():
 
     logando = login(mydb, email, senha)
 
-    botao_entrar = tk.Button(janela_login, text='Entrar', command=inicio)
-    botao_entrar.pack()
+    label_vazio = tk.Label(janela_login, text='                                    ', background='black')
+    label_vazio.grid(column=0, row=0)
+
+    label_vazio1 = tk.Label(janela_login, text='', background='black')
+    label_vazio1.grid(column=1, row=6)
+
+    botao_entrar = tk.Button(janela_login, text=' Entrar ', command=inicio)
+    botao_entrar.grid(column=1, row=7)
+
+    label_vazio2 = tk.Label(janela_login, text='', background='black')
+    label_vazio2.grid(column=3, row=6)
 
     botao_voltar = tk.Button(janela_login, text = "Cancelar", command=janela_login.destroy)
-    botao_voltar.pack()
+    botao_voltar.grid(column=3, row=7)
 
 # Cadastro de Livros
 def cadastro_livro():
@@ -149,8 +169,8 @@ def cadastro_livro():
         label_cadastro = tk.Label(janela_cl, text='Livro registrado com sucesso.')
         label_cadastro.pack()
 
-        botao_continuar = tk.Button(janela_cl, text='Voltar', command=inicio)
-        botao_continuar.pack()
+        botao_voltar = tk.Button(janela_cl, text = "Voltar", command=janela_cl.destroy)
+        botao_voltar.pack()
     
     # Janela principal    
     janela_cl = tk.Tk()
@@ -202,7 +222,7 @@ def update_livro():
         label_conf = tk.Label(janela_up2, text='Livro atualizado com sucesso.')
         label_conf.pack()
 
-        botao_voltar = tk.Button(janela_up2, text='Voltar', command=inicio)
+        botao_voltar = tk.Button(janela_up2, text = "Voltar", command=janela_up2.destroy)
         botao_voltar.pack()
     
     # Janela principal    
@@ -253,19 +273,27 @@ def update_livro():
 # Listar os Livros
 def listar_livros():
     livros = []
-    return livros
 
-    janela = Tk()
-    janela.title("Lista de Livros")
-        
+    janela_listar = tk.Tk()
+    janela_listar.title("Lista de Livros")
+    janela_listar.geometry('500x500')
+    label_title = tk.Label(janela_listar, text='Lista de Livros')
+    label_title.pack()
+
     cursor = mydb.cursor()
     cursor.execute("SELECT * FROM livros")
     livros = cursor.fetchall()
-    mydb.close()
 
     for livro in livros:
-        print(f"ID: {livro[0]}, Título: {livro[1]}, Autor: {livro[2]}, Ano: {livro[3]}")
-    
+        texto = f"ID: {livro[0]}, Título: {livro[1]}, Autor: {livro[2]}, Ano: {livro[3]}"
+        label_lista = tk.Label(janela_listar, text=texto)
+        label_lista.pack()
+
+    mydb.close()
+
+    botao_voltar = tk.Button(janela_listar, text = "Voltar", command=janela_listar.destroy)
+    botao_voltar.pack()
+  
 # Emprestar Livros
 def emprestar_livro():
     def mudando_em():
@@ -333,7 +361,7 @@ def inicio():
     botao_update = tk.Button(janela_home, text='Atualizar Livro', command=update_livro)
     botao_update.pack()
 
-    botao_listar = tk.Button(janela_home, text='Listar livros', command=listar)
+    botao_listar = tk.Button(janela_home, text='Listar livros', command=listar_livros)
     botao_listar.pack()
 
     botao_emprestar = tk.Button(janela_home, text='Emprestar Livro', command=emprestar_livro)
@@ -341,3 +369,42 @@ def inicio():
 
     botao_devolver = tk.Button(janela_home, text='Devolver Livro', command=devolver_livro)
     botao_devolver.pack()
+
+
+# Janela Principal ----------------------------
+janela_principal = tk.Tk()
+janela_principal.title('Biblioteca Portal Literário')
+janela_principal.geometry('500x250')
+janela_principal.configure(background='black')
+
+label_principal = tk.Label(janela_principal, text='Biblioteca Portal Literário', background='black', foreground='white')
+label_principal.grid(column=2, row=0)
+label_principal.configure(font=("Courier", 16, "bold"))
+
+label_vazio = tk.Label(janela_principal, text='         ', background='black')
+label_vazio.grid(column=0, row=0)
+
+
+label_escolha = tk.Label(janela_principal, text='Seja bem vindo(a)!', background='black', foreground='white')
+label_escolha.grid(column=2, row=2)
+
+label_vazio1 = tk.Label(janela_principal, text='', background='black')
+label_vazio1.grid(column=2, row=3)
+
+botao_entrar = tk.Button(janela_principal, text='     Entrar     ', command=entrar)
+botao_entrar.grid(column=2, row=4)
+
+label_vazio2 = tk.Label(janela_principal, text='    ', background='black')
+label_vazio2.grid(column=2, row=5)
+
+botao_cadastro = tk.Button(janela_principal, text='Cadastrar-se', command=cadastrar)
+botao_cadastro.grid(column=2, row=6)
+
+label_vazio3 = tk.Label(janela_principal, text='', background='black')
+label_vazio3.grid(column=2, row=8)
+
+botao_fechar = tk.Button(janela_principal, text = "Fechar", command=janela_principal.destroy)
+botao_fechar.grid(column=3, row=10)
+
+
+janela_principal.mainloop()
