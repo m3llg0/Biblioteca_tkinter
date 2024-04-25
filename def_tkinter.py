@@ -1,6 +1,5 @@
 import tkinter as tk
-from bd import *
-from bd import register, login, inserir, update, listar, emprestar, devolver
+from bd import register, login, inserir, update, emprestar, devolver
 from conexao import connect
 from tkinter import *
 
@@ -150,7 +149,7 @@ def entrar():
     botao_voltar = tk.Button(janela_login, text = "Cancelar", command=janela_login.destroy)
     botao_voltar.grid(column=3, row=7)
 
-# Cadastro de Livros
+# Cadastro de Livros V
 def cadastro_livro():
     def adicionando_l():
         titulo = entry_titulo.get()
@@ -158,18 +157,8 @@ def cadastro_livro():
         ano = entry_ano.get()
         status = 1
 
-        janela_cl = tk.Tk()
-        janela_cl.title('Confirmação: ')
-        janela_cl.geometry('500x250')
-        janela_cl.configure(background='black')
         cadastro_l = inserir(mydb, titulo, autor, ano, status)
 
-        label_cadastro = tk.Label(janela_cl, text='Livro registrado com sucesso.', background='black', foreground='white')
-        label_cadastro.grid(column=0, row=1)
-
-        botao_voltar = tk.Button(janela_cl, text = "Voltar", command=janela_cl.destroy)
-        botao_voltar.grid(column=0, row=2)
-    
     # Janela principal    
     janela_cl = tk.Tk()
     janela_cl.title('Cadastro do Livro')
@@ -201,13 +190,22 @@ def cadastro_livro():
     entry_ano.grid(column=3, row=3)
 
     # Botões
+    lv = tk.Label(janela_cl, text="", background='black', foreground='white')
+    lv.grid(column=1, row=4)
+
     botao_cadastrar = tk.Button(janela_cl, text= "Cadastrar", command=adicionando_l)
     botao_cadastrar.grid(column=1, row=5)
 
-    botao_voltar = tk.Button(janela_cl, text = "Cancelar", command=janela_cl.destroy)
+    lv2 = tk.Label(janela_cl, text="", background='black', foreground='white')
+    lv2.grid(column=3, row=4)
+
+    botao_voltar = tk.Button(janela_cl, text = "Voltar", command=janela_cl.destroy)
     botao_voltar.grid(column=3, row=5)
 
-# Atualização do livro
+    lv3 = tk.Label(janela_cl, text="             ", background='black', foreground='white')
+    lv3.grid(column=0, row=0)
+
+# Atualização do livro V
 def update_livro():
     def update_l():
         titulo_antigo = entry_ta.get()
@@ -216,71 +214,78 @@ def update_livro():
         ano_novo = entry_anon.get()
         status_novo = entry_statusn.get()
 
-        janela_up2 = tk.Tk()
-        janela_up2.title('Confirmação: ')
-        janela_up2.geometry('500x500')
         atualizando = update(mydb, titulo_antigo, titulo_novo, autor_novo, ano_novo, status_novo)
-
-        label_conf = tk.Label(janela_up2, text='Livro atualizado com sucesso.')
-        label_conf.pack()
-
-        botao_voltar = tk.Button(janela_up2, text = "Voltar", command=janela_up2.destroy)
-        botao_voltar.pack()
     
     # Janela principal    
     janela_up = tk.Tk()
     janela_up.title('Atualização do Livro')
-    janela_up.geometry('500x500')
+    janela_up.geometry('500x250')
+    janela_up.configure(background='black')
 
-    label_nome = tk.Label(janela_up, text='Atualizar Livro')
-    label_nome.pack()
+    label_nome = tk.Label(janela_up, text='Atualizar Livro', background='black', foreground='white')
+    label_nome.grid(column=2, row=0)
+    label_nome.configure(font=("Courier", 12, "bold"))
 
     # Titulo Antigo
-    label_ta = tk.Label(janela_up, text='Digite o título do livro que deseja atualizar: ')
-    label_ta.pack()
+    label_ta = tk.Label(janela_up, text='Digite o título do', background='black', foreground='white')
+    label_ta.grid(column=2, row=2)
+    label_ta2 = tk.Label(janela_up, text='livro que deseja atualizar: ', background='black', foreground='white')
+    label_ta2.grid(column=2, row=3)
     entry_ta = tk.Entry(janela_up)
-    entry_ta.pack()
+    entry_ta.grid(column=2, row=4)
 
     # Título Novo
-    label_tn = tk.Label(janela_up, text='Digite o novo título: ')
-    label_tn.pack()
+    label_tn = tk.Label(janela_up, text='Digite o novo título: ', background='black', foreground='white')
+    label_tn.grid(column=1, row=2)
     entry_tn = tk.Entry(janela_up)
-    entry_tn.pack()
+    entry_tn.grid(column=1, row=3)
 
     # Novo autor
-    label_autorn = tk.Label(janela_up, text='Digite o novo autor: ')
-    label_autorn.pack()
+    label_autorn = tk.Label(janela_up, text='Digite o novo autor: ', background='black', foreground='white')
+    label_autorn.grid(column=1, row=4)
     entry_autorn = tk.Entry(janela_up)
-    entry_autorn.pack()
+    entry_autorn.grid(column=1, row=5)
 
     # Novo ano
-    label_anon = tk.Label(janela_up, text='Digite o novo ano: ')
-    label_anon.pack()
+    label_anon = tk.Label(janela_up, text='Digite o novo ano: ', background='black', foreground='white')
+    label_anon.grid(column=3, row=4)
     entry_anon = tk.Entry(janela_up)
-    entry_anon.pack()
+    entry_anon.grid(column=3, row=5)
 
     # Novo status
-    label_statusn = tk.Label(janela_up, text='Digite o novo status (1 para Disponível, 0 para Indisponível):')
-    label_statusn.pack()
+    label_statusn = tk.Label(janela_up, text='Digite o novo status', background='black', foreground='white')
+    label_statusn.grid(column=3, row=2)
     entry_statusn = tk.Entry(janela_up)
-    entry_statusn.pack()
+    entry_statusn.grid(column=3, row=3)
 
     # Botões
     botao_up = tk.Button(janela_up, text= "Atualizar", command=update_l)
-    botao_up.pack()
+    botao_up.grid(column=1, row=10)
 
     botao_voltar = tk.Button(janela_up, text = "Cancelar", command=janela_up.destroy)
-    botao_voltar.pack()
+    botao_voltar.grid(column=3, row=10)
 
-# Listar os Livros
+    lv = tk.Label(janela_up, text="", background='black')
+    lv.grid(column=1, row=9)
+
+    lv2 = tk.Label(janela_up, text="", background='black')
+    lv2.grid(column=2, row=9)
+
+    lv3 = tk.Label(janela_up, text="             ", background='black')
+    lv3.grid(column=0, row=0)
+
+# Listar os Livros V
 def listar_livros():
     livros = []
 
     janela_listar = tk.Tk()
     janela_listar.title("Lista de Livros")
-    janela_listar.geometry('500x500')
-    label_title = tk.Label(janela_listar, text='Lista de Livros')
+    janela_listar.geometry('500x250')
+    janela_listar.configure(background='black')
+
+    label_title = tk.Label(janela_listar, text='Lista de Livros', background='black', foreground='white')
     label_title.pack()
+    label_title.configure(font=("Courier", 12, "bold"))
 
     cursor = mydb.cursor()
     cursor.execute("SELECT * FROM livros")
@@ -288,7 +293,7 @@ def listar_livros():
 
     for livro in livros:
         texto = f"ID: {livro[0]}, Título: {livro[1]}, Autor: {livro[2]}, Ano: {livro[3]}"
-        label_lista = tk.Label(janela_listar, text=texto)
+        label_lista = tk.Label(janela_listar, text=texto, background='black', foreground='white')
         label_lista.pack()
 
     mydb.close()
@@ -304,20 +309,30 @@ def emprestar_livro():
 
     janela_em = tk.Tk()
     janela_em.title("Página de emprestar um livro")
+    janela_em.geometry('500x250')
+    janela_em.configure(background='black')
     
-    text_emprestar = tk.Label(janela_em, text="Emprestar um livro!")
-    text_emprestar.grid(column=0, row=2, padx= 10, pady=10)
+    text_emprestar = tk.Label(janela_em, text="Emprestar um livro", background='black', foreground='white')
+    text_emprestar.grid(column=2, row=0)
+    text_emprestar.configure(font=("Courier", 12, "bold"))
 
-    text_id = tk.Label(janela_em,text= "Digite o id do livro:")
-    text_id.grid(column=0,row=3, padx= 10, pady=10)
+
+    text_id = tk.Label(janela_em,text= "Digite o id do livro:", background='black', foreground='white')
+    text_id.grid(column=2,row=3)
     entry_id = tk.Entry(janela_em)
-    entry_id.grid(column=0, row=4, padx= 10, pady=10)
+    entry_id.grid(column=2, row=4)
 
-    botao_voltar6 = tk.Button(janela_em, text="Fechar a janela", command= janela_em.destroy)
-    botao_voltar6.grid(column=0, row=1, padx=10, pady=10)
+    lv = tk.Label(janela_em, text="", background='black')
+    lv.grid(column=2, row=5)
+
+    label_vazio = tk.Label(janela_em, text='         ', background='black')
+    label_vazio.grid(column=0, row=0)
+
+    botao_voltar6 = tk.Button(janela_em, text="Cancelar", command= janela_em.destroy)
+    botao_voltar6.grid(column=3, row=6)
 
     botao_entrar6 = tk.Button(janela_em, text="Concluido!", command=mudando_em)
-    botao_entrar6.grid(column=0, row=7,  padx= 10, pady=10)
+    botao_entrar6.grid(column=1, row=6)
 
 # Devolver livros
 def devolver_livro():
