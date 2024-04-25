@@ -193,6 +193,7 @@ def cadastro_livro():
     entry_autor = tk.Entry(janela_cl)
     entry_autor.grid(column=2, row=3)
 
+
     # Ano
     label_ano = tk.Label(janela_cl, text='Ano: ', background='black', foreground='white')
     label_ano.grid(column=3, row=2)
