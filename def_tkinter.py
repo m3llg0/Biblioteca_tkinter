@@ -474,4 +474,5 @@ label_vazio2.grid(column=2, row=5)
 label_vazio3 = tk.Label(janela_principal, text='', background='black')
 label_vazio3.grid(column=2, row=8)
 
+
 janela_principal.mainloop()
